@@ -17,14 +17,17 @@
         android:orientation="horizontal">
 
         <com.google.android.material.button.MaterialButton
-            style="@style/Widget.AppCompat.Button.Borderless"
+            android:id="@+id/bu1"
             android:layout_width="wrap_content"
-            android:layout_height="66dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:minWidth="88dp"
+            android:minHeight="88dp"
             android:text="x"
             android:textColor="@color/black"
             android:textSize="15sp"
             app:backgroundTint="@android:color/transparent"
-            app:cornerRadius="8dp"
             app:rippleColor="#33AAAAAA"
             app:strokeColor="#000000"
             app:strokeWidth="2dp" />
