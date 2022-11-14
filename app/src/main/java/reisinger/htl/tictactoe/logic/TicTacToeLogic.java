@@ -1,4 +1,6 @@
-package reisinger.htl.tictactoe;
+package reisinger.htl.tictactoe.logic;
+
+import reisinger.htl.tictactoe.R;
 
 public class TicTacToeLogic {
 
@@ -19,7 +21,6 @@ public class TicTacToeLogic {
 
     public void newBoard(int i, char c) {
         counter++;
-        String temp = (i + "");
         switch (i) {
             case R.id.bu1: board[0][0] = c;
             break;
@@ -43,10 +44,6 @@ public class TicTacToeLogic {
     }
 
     public int checkForWin() {
-
-        if (counter==9) {
-            return -3;
-        }
 
         for (int i = 0; i < board.length; i++) {
             if ((board[i][0] == 'x' && board[i][1] == 'x' &&board[i][2] == 'x')) {
@@ -74,6 +71,10 @@ public class TicTacToeLogic {
             return -1;
         } else if ((board[2][0] == 'o' && board[1][1] == 'o' &&board[0][2] == 'o')) {
             return 1;
+        }
+
+        if (counter==9) {
+            return -3;
         }
 
         return -2;

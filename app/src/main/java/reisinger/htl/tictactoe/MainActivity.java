@@ -2,10 +2,13 @@ package reisinger.htl.tictactoe;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import reisinger.htl.tictactoe.logic.MiniMaxLogic;
+import reisinger.htl.tictactoe.logic.TicTacToeLogic;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -18,45 +21,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        inizialize();
+        Button b = findViewById(R.id.change1v1);
+        Button b2 = findViewById(R.id.changeminimax);
+        b.setOnClickListener(this);
+        b2.setOnClickListener(this);
     }
-
-    void inizialize() {
-        int[] ids = {R.id.bu1, R.id.bu2, R.id.bu3, R.id.bu4, R.id.bu5, R.id.bu6, R.id.bu7, R.id.bu8, R.id.bu9};
-        for (int id : ids) {
-            findViewById(id).setOnClickListener(this);
-        }
-    }
-
 
 
     @Override
     public void onClick(View view) {
-        Button b = (Button) view;
-        if (b.getText().equals(" ")) {
-            if (isP1) {
-                tttl.newBoard(view.getId(), 'x');
-                b.setText("X");
-                isP1 = false;
-            } else {
-                tttl.newBoard(view.getId(), 'o');
-                b.setText("O");
-                isP1 = true;
-            }
-            switch (tttl.checkForWin()) {
-                case -1:
-                    Log.i("MainActivity", "Player 1 wins");
-                    break;
-                case 1:
-                    Log.i("MainActivity", "Player 2 wins");
-                    break;
-                case -2:
-                    Log.i("MainActivity", "No win yet");
-                    break;
-                case -3:
-                    Log.i("MainActivity", "Draw");
-                    break;
-            }
+        if(view.getId() == R.id.change1v1) {
+            System.out.println("not pressed");
+            Intent switchActivityIntent = new Intent(this, Activity_1v1.class);
+            startActivity(switchActivityIntent);
+        }else {
+            System.out.println("pressed");
+            Intent switchActivityIntent = new Intent(this, Activity_MiniMax.class);
+            startActivity(switchActivityIntent);
         }
     }
 }
